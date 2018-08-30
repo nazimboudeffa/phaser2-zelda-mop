@@ -4,7 +4,7 @@ var layer1, layer2, layer3;
 var player;
 var cursors;
 //640x480
-game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.CANVAS, 'Zelda Mysteries of PhaserIO', { preload: preload, create: create, update: update, render: render });
+game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.CANVAS, 'Zelda Mysteries of Phaser CE', { preload: preload, create: create, update: update, render: render });
 
 function preload() {
 
@@ -22,7 +22,7 @@ function create() {
     game.scale.pageAlignHorizontally = true;
     game.scale.setShowAll();
     game.scale.refresh();
-    
+
 //World
     map = game.add.tilemap('hyrule');
     map.addTilesetImage('light_world.tiles', 'light_world');
