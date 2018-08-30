@@ -4,7 +4,7 @@ var layer1, layer2, layer3;
 var player;
 var cursors;
 //640x480
-game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.CANVAS, 'Zelda Mysteries of Phaser CE', { preload: preload, create: create, update: update, render: render });
+game = new Phaser.Game(640, 480, Phaser.CANVAS, 'Zelda Mysteries of Phaser CE', { preload: preload, create: create, update: update, render: render });
 
 function preload() {
 
@@ -15,13 +15,6 @@ function preload() {
 
 function create() {
     game.physics.startSystem(Phaser.Physics.ARCADE);
-
-    game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
-    game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-    game.scale.pageAlignVertically = true;
-    game.scale.pageAlignHorizontally = true;
-    game.scale.setShowAll();
-    game.scale.refresh();
 
 //World
     map = game.add.tilemap('hyrule');
