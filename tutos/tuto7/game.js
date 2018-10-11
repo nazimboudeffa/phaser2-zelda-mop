@@ -1,48 +1,22 @@
 var game;
-var map;
-var layer1, layer2, layer3;
 var player;
 var cursors;
-//640x480
-game = new Phaser.Game(640, 480, Phaser.CANVAS, 'Zelda Mysteries of Phaser CE', { preload: preload, create: create, update: update, render: render });
+var container;
+
+game = new Phaser.Game(640, 480, Phaser.CANVAS, 'Zelda Mysteries of PhaserIO', { preload: preload, create: create, update: update, render: render });
 
 function preload() {
-
-    game.load.tilemap('hyrule', 'assets/tiles/hyrule.json', null, Phaser.Tilemap.TILED_JSON);
-    game.load.image('light_world', 'assets/tiles/light_world.tiles.png');
     game.load.spritesheet('link', 'assets/sprites/walking.tunic.png', 24, 32, 55);
+    game.load.image('container', 'assets/sprites/dialog.png');
+    game.load.image('linkFace', 'assets/sprites/link-005.png');
 }
 
 function create() {
-    game.physics.startSystem(Phaser.Physics.ARCADE);
-
-//World
-    map = game.add.tilemap('hyrule');
-    map.addTilesetImage('light_world.tiles', 'light_world');
-
-
-// Order of layer in tile editor is important for collision
-    layer1 = map.createLayer('Calque de Tile 1');
-    layer2 = map.createLayer('Calque 2');
-
-    layer1.resizeWorld();
-
-//The big tree i didn't uses a collision for the little trees yet
-    map.setCollisionBetween(1078, 1085, true, layer2);//look at the id in tiled on the spritesheet
-    map.setCollisionBetween(1174, 1181, true, layer2);
-    map.setCollisionBetween(1271, 1276, true, layer2);
-    map.setCollisionBetween(1369, 1370, true, layer2);
-
-    game.world.setBounds(0, 0, 1280, 960);
 
 //Player
     player = game.add.sprite(50, 150, 'link');
     //player.scale.set(2);
     player.smoothed = false;
-
-//As the order of the layers is important it's also important here
-//to call it after the sprite
-    layer3 = map.createLayer('Calque 3');
 
     player.animations.add('right', [0, 1, 2, 3, 4, 5, 6, 7], 16, false);
     player.animations.add('up', [12, 13, 14, 15, 16, 17, 18], 16, false);
@@ -54,11 +28,26 @@ function create() {
 
     cursors = game.input.keyboard.createCursorKeys();
 
+//https://www.rockpapershotgun.com/2017/02/13/stardew-valley-marriage-work/?utm_content=buffer7b943&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer
+//http://www.html5gamedevs.com/topic/17670-chatboxdialoguebubble-box-above-character/
+    container = game.add.sprite(100, 100, 'container');
+    container.scale.setTo(1);
+    container.alpha = 0.8;
+    //container.visible = false;
+    var text = game.add.text(20, 20, 'Hello my name is Link', {font: 'bold 10px Arial', fill: '#FFFFFF'});
+    text.wordWrapWidth = '580'; //width of container
+    text.inputEnabled = true;
+    //text2.events.onInputDown.add(closeContainer, this);
+    container.addChild(text);
+    //chat.inputEnabled = true;
+    //chat.events.onInputDown.add(listener, this);
+    var face = game.add.sprite(250, 20, 'linkFace');
+    face.scale.setTo(1);
+    container.addChild(face);
+
 }
 
 function update() {
-    game.physics.arcade.collide(player, layer2);
-    player.body.collideWorldBounds = true;
 
     player.body.velocity.x = 0;
     player.body.velocity.y = 0;

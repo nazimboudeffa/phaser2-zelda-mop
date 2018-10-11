@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<body>
+  <ul class="w3-navbar w3-black">
+   <li><a href="index.html">Home</a></li>
+   <li><a href="#">Link 1</a></li>
+   <li><a href="#">Link 2</a></li>
+   <li><a href="#">Link 3</a></li>
+  </ul>
+
+  <nav class="w3-sidenav w3-white w3-card-2" style="width:200px">
+    <br>
+    <a href="load-an-image.html">Load a spritesheet</a>
+    <a href="animation.html">Animation</a>
+    <a href="tilemap.html">Tilemap</a>
+    <a href="states.html">States</a>
+    <a href="#">Link</a>
+    <a href="#">Link</a>
+    <a href="refs.html">References</a>
+  </nav>
+
+  <div style="margin-left:210px">
+
+  <header class="w3-container w3-teal">
+    <h1>Mystery of Phaser CE</h1>
+  </header>
+
+
+  <h2>States</h2>
+  <p>To call a state :</p>
+
+  <div class="w3-example">
+    <h3>Example</h3>
+    <div class="w3-code jsHigh">
+      Game.prototype = {
+      	start: function() {
+
+      		// Create game
+      		game = new Phaser.Game(64 * 10, 64 * 8, Phaser.CANVAS, 'Zelda Mysteries of PhaserIO');
+
+      		// Game states
+      		game.state.add('boot', BootState);
+      		game.state.add('preload', PreloadState);
+      		game.state.add('play', PlayState);
+
+      		// Start boot
+      		game.state.start('boot');
+      	}
+      }
+      <br>
+    </div>
+  </div>
+  <p><a href="../tutorials/tuto4">Tutorial 4</a></p>
+
+  </div>
+  <script src="http://www.w3schools.com/lib/w3codecolor.js"></script>
+
+  <script>
+  w3CodeColor();
+  </script>
+  </body>
+  </html>

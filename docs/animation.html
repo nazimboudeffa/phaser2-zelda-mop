@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<body>
+
+  <ul class="w3-navbar w3-black fixed-top">
+   <li><a href="index.html">Home</a></li>
+   <li><a href="#">Link 1</a></li>
+   <li><a href="#">Link 2</a></li>
+   <li><a href="#">Link 3</a></li>
+  </ul>
+
+  <nav class="w3-sidenav w3-white w3-card-2" style="width:200px">
+    <br>
+    <a href="load-an-image.html">Load a spritesheet</a>
+    <a href="animation.html">Animation</a>
+    <a href="tilemap.html">Tilemap</a>
+    <a href="states.html">States</a>
+    <a href="#">Link</a>
+    <a href="#">Link</a>
+    <a href="refs.html">References</a>
+  </nav>
+
+  <div style="margin-left:210px">
+
+  <header class="w3-container w3-teal">
+    <h1>Mystery of Phaser CE</h1>
+  </header>
+
+  <h2>Loading a spritesheet</h2>
+  <p>To animate Link's sprite :</p>
+  <p>
+  1- you need to reference a spritesheet
+  </p>
+  <div class="w3-example">
+    <h3>Example</h3>
+    <div class="w3-code jsHigh">
+      game.load.spritesheet('link', 'assets/sprites/walking.tunic.png', 24, 32, 55);
+    </div>
+  </div>
+
+  <p>
+  2- create the animation
+  </p>
+  <div class="w3-example">
+    <h3>Example</h3>
+    <div class="w3-code jsHigh">
+      player.animations.add('right', [0, 1, 2, 3, 4, 5, 6, 7], 16, false);<br>
+    </div>
+  </div>
+  <p>
+    Animations contain a key that references the sprite sheet and a number of images
+  </p>
+  <p>Let's look at this animation on <a href="https://scratch.mit.edu/projects/134310945/">scratch<a></p>
+
+  <p>Try to look at the code <a href="../tutorials/tuto2">Tutorial 2</a></p>
+
+  <!--/*
+    *
+    * Revive Adserver Asynchronous JS Tag
+    * - Generated with Revive Adserver v4.0.0
+    *
+    */-->
+
+  <ins data-revive-zoneid="1" data-revive-id="4c4167cd1599b10eeef0ffcf75714c2f"></ins>
+  <script async src="//asciimulation.link/revive-adserver/revive-adserver-4.0.0/www/delivery/asyncjs.php"></script>
+
+  </div>
+  <script src="http://www.w3schools.com/lib/w3codecolor.js"></script>
+
+  <script>
+  w3CodeColor();
+  </script>
+  </body>
+  </html>
