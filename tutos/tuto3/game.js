@@ -4,13 +4,13 @@ var layer1, layer2, layer3;
 var player;
 var cursors;
 
-game = new Phaser.Game(640, 480, Phaser.CANVAS, 'Zelda Mysteries of PhaserIO', { preload: preload, create: create, update: update, render: render });
+game = new Phaser.Game(640, 480, Phaser.CANVAS, 'Zelda Mystery of Phaser CE', { preload: preload, create: create, update: update, render: render });
 
 function preload() {
 
-    game.load.tilemap('hyrule', 'assets/tiles/hyrule.json', null, Phaser.Tilemap.TILED_JSON);
-    game.load.image('light_world', 'assets/tiles/light_world.tiles.png');
-    game.load.spritesheet('link', 'assets/sprites/walking.tunic.png', 24, 32, 55);
+    game.load.tilemap('hyrule', '../assets/maps/hyrule.json', null, Phaser.Tilemap.TILED_JSON);
+    game.load.image('light_world', '../assets/maps/light_world.tiles.png');
+    game.load.spritesheet('link', '../assets/sprites/walking.tunic.png', 24, 32, 55);
 }
 
 function create() {

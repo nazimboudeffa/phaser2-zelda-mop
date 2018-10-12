@@ -2,93 +2,52 @@ var game;
 var player;
 var cursors;
 var container;
+var textObject;
 
-game = new Phaser.Game(640, 480, Phaser.CANVAS, 'Zelda Mysteries of PhaserIO', { preload: preload, create: create, update: update, render: render });
+game = new Phaser.Game(640, 480, Phaser.CANVAS, 'Zelda Mystery of Phaser CE', { preload: preload, create: create, update: update, render: render });
 
 function preload() {
-    game.load.spritesheet('link', 'assets/sprites/walking.tunic.png', 24, 32, 55);
-    game.load.image('container', 'assets/sprites/dialog.png');
-    game.load.image('linkFace', 'assets/sprites/link-005.png');
+
+    game.load.image('container', '../assets/sprites/dialog_box.png');
+    game.load.bitmapFont('desyrel', '../assets/fonts/desyrel.png', '../assets/fonts/desyrel.xml');
 }
 
 function create() {
 
-//Player
-    player = game.add.sprite(50, 150, 'link');
-    //player.scale.set(2);
-    player.smoothed = false;
-
-    player.animations.add('right', [0, 1, 2, 3, 4, 5, 6, 7], 16, false);
-    player.animations.add('up', [12, 13, 14, 15, 16, 17, 18], 16, false);
-    player.animations.add('left', [33, 34, 35, 36, 37, 38, 39, 40], 16, false);
-    player.animations.add('down', [44, 45, 46, 47, 48, 49, 50, 51], 16, false);
-
-    game.physics.enable(player);
-    game.camera.follow(player);
-
-    cursors = game.input.keyboard.createCursorKeys();
-
-//https://www.rockpapershotgun.com/2017/02/13/stardew-valley-marriage-work/?utm_content=buffer7b943&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer
-//http://www.html5gamedevs.com/topic/17670-chatboxdialoguebubble-box-above-character/
     container = game.add.sprite(100, 100, 'container');
     container.scale.setTo(1);
     container.alpha = 0.8;
-    //container.visible = false;
-    var text = game.add.text(20, 20, 'Hello my name is Link', {font: 'bold 10px Arial', fill: '#FFFFFF'});
-    text.wordWrapWidth = '580'; //width of container
-    text.inputEnabled = true;
-    //text2.events.onInputDown.add(closeContainer, this);
-    container.addChild(text);
-    //chat.inputEnabled = true;
-    //chat.events.onInputDown.add(listener, this);
-    var face = game.add.sprite(250, 20, 'linkFace');
-    face.scale.setTo(1);
-    container.addChild(face);
+
+    var message = 'Hello my name is Link';
+    textObject = game.add.bitmapText(100, 100, 'desyrel', message, 20);
+
+    displayLetterByLetterText(textObject, message, function() {
+    // stuff you want to do at the end of the animation
+    // eg. this.input.onDown.addOnce(this.start, this);
+    });
+
+}
+
+function displayNextLetter() {
+
+    this.textObject.text = this.message.substr(0, this.counter);
+    this.counter += 1;
+
+}
+
+function displayLetterByLetterText(textObject, message, onCompleteCallback) {
+
+    var timerEvent = game.time.events.repeat(80, message.length, displayNextLetter,
+                                { textObject: textObject, message: message, counter: 1 });
+
+    timerEvent.timer.onComplete.addOnce(onCompleteCallback, this);
 
 }
 
 function update() {
 
-    player.body.velocity.x = 0;
-    player.body.velocity.y = 0;
-
-    var speed = 160;
-
-    if (cursors.right.isDown)
-    {
-        game.camera.x += 4;
-        player.body.velocity.x = +speed;
-        player.animations.play('right');
-    }
-
-    else if (cursors.up.isDown)
-    {
-        game.camera.y -= 4;
-        player.body.velocity.y = -speed;
-        player.animations.play('up');
-    }
-
-    else if (cursors.left.isDown)
-    {
-        game.camera.x -= 4;
-        player.body.velocity.x = -speed;
-        player.animations.play('left');
-    }
-
-    else if (cursors.down.isDown)
-    {
-        game.camera.y += 4;
-        player.body.velocity.y = +speed;
-        player.animations.play('down');
-    } else {
-
-        player.animations.stop();
-    }
-
 }
 
 function render() {
-
-    game.debug.spriteInfo(player, 20, 32);
 
 }

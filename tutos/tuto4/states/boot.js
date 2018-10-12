@@ -5,7 +5,7 @@ BootState.prototype = {
 	preload: function() {
 
 		// Load assets for loading screen
-		this.game.load.image('preload_bar', 'assets/img/preload_bar.png');
+		this.game.load.image('preload_bar', '../assets/img/preload_bar.png');
 	},
 
 	init: function() {

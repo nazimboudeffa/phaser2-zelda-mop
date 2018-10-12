@@ -4,7 +4,7 @@ Game.prototype = {
 	start: function() {
 
 		// Create game
-		game = new Phaser.Game(64 * 10, 64 * 8, Phaser.CANVAS, 'Zelda Mysteries of PhaserIO');
+		game = new Phaser.Game(64 * 10, 64 * 8, Phaser.CANVAS, 'Zelda Mystery of Phaser CE');
 
 		// Game states
 		game.state.add('boot', BootState);

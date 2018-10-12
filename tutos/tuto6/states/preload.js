@@ -3,8 +3,8 @@ var PreloadState = function() {};
 PreloadState.prototype = {
 	preload: function() {
 
-		game.load.tilemap('hyrule', 'assets/tiles/hyrule.json', null, Phaser.Tilemap.TILED_JSON);
-		game.load.image('light_world', 'assets/tiles/light_world.tiles.png');
+		game.load.tilemap('hyrule', '../assets/maps/hyrule.json', null, Phaser.Tilemap.TILED_JSON);
+		game.load.image('light_world', 'assets/maps/light_world.tiles.png');
 		game.load.spritesheet('link', 'assets/sprites/walking.tunic.png', 24, 32, 55);
 
 		// Loading label
