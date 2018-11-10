@@ -4,12 +4,12 @@ var layer1, layer2, layer3;
 var player;
 var cursors;
 //640x480
-game = new Phaser.Game(640, 360, Phaser.CANVAS, 'Zelda Mysteries of Phaser CE', { preload: preload, create: create, update: update, render: render });
+game = new Phaser.Game(640, 360, Phaser.CANVAS, 'Zelda Mystery of Phaser CE', { preload: preload, create: create, update: update, render: render });
 
 function preload() {
 
-    game.load.tilemap('map', 'assets/tiles/light_world.json', null, Phaser.Tilemap.TILED_JSON);
-    game.load.image('light_world', 'assets/tiles/light_world.tiles.png');
+    game.load.tilemap('map', 'assets/maps/light_world.json', null, Phaser.Tilemap.TILED_JSON);
+    game.load.image('light_world', 'assets/maps/light_world.tiles.png');
     game.load.spritesheet('link', 'assets/sprites/walking.tunic.png', 24, 32, 55);
 }
 
@@ -22,8 +22,8 @@ function create() {
 
 
 // Order of layer in tile editor is important for collision
-    layer1 = map.createLayer('Calque de Tile 1');
-    layer2 = map.createLayer('Calque 2');
+    layer1 = map.createLayer('Calque 1 Ground');
+    layer2 = map.createLayer('Calque 2 Collision');
 
     layer1.resizeWorld();
 
@@ -44,7 +44,7 @@ function create() {
 
 //As the order of the layers is important it's also important here
 //to call it after the sprite
-    layer3 = map.createLayer('Calque 3');
+    layer3 = map.createLayer('Calque 3 Sky');
 
     player.animations.add('right', [0, 1, 2, 3, 4, 5, 6, 7], 16, false);
     player.animations.add('up', [12, 13, 14, 15, 16, 17, 18], 16, false);
