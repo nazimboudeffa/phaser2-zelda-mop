@@ -19,7 +19,7 @@ function create() {
     container.alpha = 0.8;
 
     var message = 'Hello my name is Link';
-    textObject = game.add.bitmapText(100, 100, 'desyrel', message, 20);
+    textObject = game.add.bitmapText(120, 120, 'desyrel', message, 20);
 
     displayLetterByLetterText(textObject, message, function() {
     // stuff you want to do at the end of the animation

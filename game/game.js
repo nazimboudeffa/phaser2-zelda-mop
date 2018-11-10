@@ -8,7 +8,7 @@ game = new Phaser.Game(640, 360, Phaser.CANVAS, 'Zelda Mysteries of Phaser CE', 
 
 function preload() {
 
-    game.load.tilemap('hyrule', 'assets/tiles/hyrule.json', null, Phaser.Tilemap.TILED_JSON);
+    game.load.tilemap('map', 'assets/tiles/light_world.json', null, Phaser.Tilemap.TILED_JSON);
     game.load.image('light_world', 'assets/tiles/light_world.tiles.png');
     game.load.spritesheet('link', 'assets/sprites/walking.tunic.png', 24, 32, 55);
 }
@@ -17,7 +17,7 @@ function create() {
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
 //World
-    map = game.add.tilemap('hyrule');
+    map = game.add.tilemap('map');
     map.addTilesetImage('light_world.tiles', 'light_world');
 
 
@@ -33,10 +33,12 @@ function create() {
     map.setCollisionBetween(1271, 1276, true, layer2);
     map.setCollisionBetween(1369, 1370, true, layer2);
 
-    game.world.setBounds(0, 0, 1280, 960);
+//  game.world.setBounds(0, 0, 1280, 960);
+    game.world.setBounds(0, 0, 4096, 4096);
+
 
 //Player
-    player = game.add.sprite(50, 150, 'link');
+    player = game.add.sprite(196, 1939, 'link');
     //player.scale.set(2);
     player.smoothed = false;
 
